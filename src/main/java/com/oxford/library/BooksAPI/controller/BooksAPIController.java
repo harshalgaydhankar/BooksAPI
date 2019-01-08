@@ -26,9 +26,9 @@ public class BooksAPIController {
     }
 
     @GetMapping("/getBook/{bookId}")
-    public Optional<Book> getBookById(@PathVariable("bookId") int bookId) {
+    public Book getBookById(@PathVariable("bookId") int bookId) {
         Optional<Book> result = books.stream().parallel().filter(book -> book.getBookId() == bookId).findAny();
-        return result;
+        return result.get();
     }
 
     @PutMapping("/editBook/{bookId}")
